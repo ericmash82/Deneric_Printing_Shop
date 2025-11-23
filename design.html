@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Studio | Deneric Printing</title>
+    
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Deneric <span>Printing</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="design.html" class="active">Design Studio</a></li>
+                <li><a href="quote.html" class="btn-quote">Get a Quote</a></li>
+            </ul>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </div>
+    </nav>
+
+    <section class="studio-section">
+        <div class="container studio-grid">
+            
+            <div class="studio-controls">
+                
+                <div class="control-header">
+                    <h2><i class="fas fa-layer-group"></i> Design Controls</h2>
+                </div>
+
+                <div class="control-group">
+                    <label class="group-label">1. Choose Product</label>
+                    <div class="product-selector">
+                        <button class="prod-btn active" onclick="changeProduct('tshirt')">
+                            <i class="fas fa-tshirt"></i> T-Shirt
+                        </button>
+                        <button class="prod-btn" onclick="changeProduct('banner')">
+                            <i class="fas fa-scroll"></i> Banner
+                        </button>
+                        <button class="prod-btn" onclick="changeProduct('mug')">
+                            <i class="fas fa-mug-hot"></i> Mug
+                        </button>
+                    </div>
+                </div>
+
+                <div class="control-group product-details">
+                    <label class="group-label">2. Product Options</label>
+                    
+                    <div class="detail-row">
+                        
+                        <div id="controls-tshirt">
+                            <div class="color-picker">
+                                <span>Base Color:</span>
+                                <div class="color-options">
+                                    <div class="swatch white active" onclick="changeColor('#ffffff')" title="White"></div>
+                                    <div class="swatch black" onclick="changeColor('#333333')" title="Black"></div>
+                                    <div class="swatch red" onclick="changeColor('#cc0000')" title="Red"></div>
+                                    <div class="swatch navy" onclick="changeColor('#001f3f')" title="Navy"></div>
+                                    <div class="swatch yellow" onclick="changeColor('#FFD700')" title="Yellow"></div>
+                                </div>
+                            </div>
+                            <div class="size-picker">
+                                <span>Size:</span>
+                                <select class="form-select" onchange="updatePrice()">
+                                    <option value="S">Small (S)</option>
+                                    <option value="M" selected>Medium (M)</option>
+                                    <option value="L">Large (L)</option>
+                                    <option value="XL">Extra Large (XL)</option>
+                                    <option value="XXL">XXL</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div id="controls-banner" style="display: none;">
+                            <span>Banner Type & Size:</span>
+                            <select id="banner-select" class="form-select" onchange="updatePrice()">
+                                <option value="rollup-std">Roll-up Banner (Standard) - KES 5,500</option>
+                                <option value="broadbase">Broadbase Banner (Premium) - KES 8,500</option>
+                                <option value="xbanner">X-Banner (Economy) - KES 3,500</option>
+                                <option value="backdrop">Backdrop (2m x 2m) - KES 15,000</option>
+                            </select>
+                        </div>
+
+                        <div id="controls-mug" style="display: none;">
+                            <span>Mug Type:</span>
+                            <select id="mug-select" class="form-select" onchange="updatePrice()">
+                                <option value="white">Standard White Mug - KES 600</option>
+                                <option value="magic">Magic Mug (Heat Sensitive) - KES 1,200</option>
+                                <option value="twotone">Two-Tone Mug - KES 800</option>
+                                <option value="cone">Cone/Latte Mug - KES 1,000</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="price-box">
+                    <span>Estimated Cost:</span>
+                    <h3 id="display-price">KES 1,000</h3>
+                </div>
+
+                <hr class="divider">
+
+                <div class="control-group">
+                    <label class="group-label">3. Upload Logo/Art</label>
+                    <div class="upload-box">
+                        <input type="file" id="imageUpload" accept="image/*">
+                        <label for="imageUpload" class="upload-btn">
+                            <i class="fas fa-cloud-upload-alt"></i> Click to Upload Image
+                        </label>
+                    </div>
+                </div>
+
+                <div class="control-group adjustments" id="adjustments-panel">
+                    <label class="group-label">4. Position & Size</label>
+                    
+                    <div class="slider-group">
+                        <label>Logo Size</label>
+                        <input type="range" id="sizeSlider" min="20" max="300" value="100">
+                    </div>
+                    
+                    <div class="slider-group">
+                        <label>Vertical Position</label>
+                        <input type="range" id="ySlider" min="0" max="100" value="30">
+                    </div>
+                    
+                    <div class="slider-group">
+                        <label>Horizontal Position</label>
+                        <input type="range" id="xSlider" min="0" max="100" value="50">
+                    </div>
+                </div>
+
+                <div class="studio-actions">
+                    <button class="btn btn-primary full-width" onclick="transferToQuote()">
+    Request Quote
+</button>
+                </div>
+            </div>
+
+            <div class="studio-preview">
+                <div class="canvas-wrapper">
+                    <h3>Live Preview</h3>
+                    <div class="canvas-container">
+                        <img id="product-image" src="assets/images/products/plan tee.jpg" alt="Product">
+                        
+                        <div id="product-tint"></div>
+
+                        <img id="user-design" src="" alt="Your Design" style="display: none;">
+                    </div>
+                    <p class="preview-note">* This is a digital visualization. Actual print size may vary slightly.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Deneric Printing. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/design.js"></script>
+    <script src="assets/js/main.js"></script>
+
+</body>
+</html>

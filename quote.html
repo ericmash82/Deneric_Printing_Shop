@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get a Quote | Deneric Printing</title>
+    
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Deneric <span>Printing</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="design.html">Design Studio</a></li>
+                <li><a href="quote.html" class="active btn-quote">Get a Quote</a></li>
+            </ul>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Request a Quote</h1>
+            <p>Tell us what you need, and we'll send you a custom price within 2 hours.</p>
+        </div>
+    </header>
+
+    <section class="quote-section">
+        <div class="container quote-grid">
+            
+            <div class="quote-form-card">
+                <h3>Project Details</h3>
+                <form action="#" method="POST"> <div class="form-row">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" placeholder="07XX XXX XXX" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="john@example.com" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Service Needed</label>
+                            <select id="service-select">
+                                <option value="general">Select a Service...</option>
+                                <option value="branding">Corporate Branding</option>
+                                <option value="banner">Large Format / Banners</option>
+                                <option value="tshirt">Apparel / T-Shirts</option>
+                                <option value="cards">Business Cards / Stationery</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Quantity</label>
+                            <input type="number" placeholder="e.g. 100" min="1">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Project Description</label>
+                        <textarea id="project-desc" rows="4" placeholder="Describe paper type, size, colors..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Upload Artwork (Optional)</label>
+                        <div class="file-upload-wrapper">
+                            <input type="file" id="quote-file" class="file-input">
+                            <div class="file-upload-box">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Drag & Drop files here or click to browse</p>
+                                <span class="file-name" id="file-name-display">No file selected</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary full-width">Submit Request</button>
+                    
+                    <p class="form-note"><i class="fas fa-lock"></i> Your data is secure. We reply via Email or WhatsApp.</p>
+                </form>
+            </div>
+
+            <div class="quote-sidebar">
+                <div class="info-box">
+                    <h4><i class="fas fa-phone-alt"></i> Need it Faster?</h4>
+                    <p>Call or WhatsApp us directly for urgent orders.</p>
+                    <a href="https://wa.me/254700000000" class="contact-link">+254 700 000 000</a>
+                </div>
+
+                <div class="info-box">
+                    <h4><i class="fas fa-map-marker-alt"></i> Visit Us</h4>
+                    <p>Building Name, Floor Number<br>Street Name, Nairobi, Kenya</p>
+                </div>
+
+                <div class="trust-box">
+                    <h4>Why Deneric?</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> High Quality Digital Printing</li>
+                        <li><i class="fas fa-check"></i> Free Design Review</li>
+                        <li><i class="fas fa-check"></i> Countrywide Delivery</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Deneric Printing. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('quote-file').addEventListener('change', function(e){
+            var fileName = e.target.files[0].name;
+            document.getElementById('file-name-display').innerText = "Selected: " + fileName;
+            document.getElementById('file-name-display').style.color = "var(--wine-red)";
+            document.getElementById('file-name-display').style.fontWeight = "bold";
+        });
+
+        // --- NEW CODE: AUTO-FILL FROM DESIGN STUDIO ---
+    window.addEventListener('DOMContentLoaded', () => {
+        // 1. Read the URL parameters
+        const params = new URLSearchParams(window.location.search);
+        
+        if (params.has('service')) {
+            const service = params.get('service');
+            const details = params.get('details');
+            const price = params.get('price');
+
+            // 2. Select the dropdown option
+            const selectBox = document.getElementById('service-select');
+            if(selectBox) {
+                selectBox.value = service; // Selects 'tshirt', 'banner', etc.
+            }
+
+            // 3. Fill the description box with details & price
+            const descBox = document.getElementById('project-desc');
+            if(descBox) {
+                descBox.value = `PRE-FILLED FROM DESIGN STUDIO:\n----------------------------\nItem: ${details}\nEstimated Price: ${price}\n\nAdditional Notes: `;
+            }
+        }
+    });
+    </script>
+
+    
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

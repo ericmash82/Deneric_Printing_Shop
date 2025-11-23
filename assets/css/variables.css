@@ -1,0 +1,30 @@
+/* File: assets/css/variables.css */
+:root {
+    /* YOUR BRAND PALETTE */
+    --wine-red: #800020;    /* Primary Brand Color */
+    --navy-blue: #001f3f;   /* Structural/Dark Color */
+    --yellow: #FFD700;      /* Highlight Color */
+    --orange: #FF851B;      /* Call to Action (CTA) */
+    --sky-blue: #e0f7fa;    /* Backgrounds (Light tint for readability) */
+    
+    /* MAPPING TO FUNCTIONAL ROLES */
+    --primary-color: var(--wine-red);
+    --secondary-color: var(--navy-blue);
+    --accent-color: var(--yellow);
+    --cta-color: var(--orange);
+    
+    /* BASICS */
+    --text-dark: var(--navy-blue);
+    --text-light: #ffffff;
+    --bg-light: #ffffff;
+    --bg-off-white: var(--sky-blue);
+    
+    /* SPACING & LAYOUT */
+    --container-width: 1200px;
+    --section-padding: 80px 20px;
+    --radius: 8px;
+    --shadow: 0 5px 15px rgba(0,0,0,0.1);
+    
+    /* FONTS */
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
